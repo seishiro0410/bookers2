@@ -7,14 +7,16 @@
   </ul>
 <% end %>
 
-
+<div class="container px-5 px-sm 0">
+  
 <%= render 'list', book: @book, user: @user %>
 
 
+<div class="col-md-8 offset-md-1">
+  <h2>Books</h2>
 
- <h1>Books</h1>
 <% @books.each do |book| %>
-      <table>
+      <table class="table table-hover table-inverse">
         <thead>
           <tr>
             <th></th>
@@ -22,7 +24,7 @@
             <th>Opinion</th>
             <th colspan="3"></th>
           </tr>
-      </thead>
+        </thead>
 
 
       <tbody>
@@ -39,8 +41,10 @@
       </tbody>
 
       </table>
+    </div>
   </div>
 <% end %>
+</div>
 
 
 

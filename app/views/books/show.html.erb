@@ -14,6 +14,13 @@
       <table>
         <thead>
           <tr>
+            <th></th>
+            <th>title</th>
+            <th>opinion</th>
+          </tr>
+        </thead>
+        
+        <tbody>
             <td>
             <%= link_to user_path(book.user.id) do %>
               <%= image_tag @user.get_profile_image(100,100) %>
@@ -25,9 +32,9 @@
               <td><%= link_to "Edit", edit_book_path(@books.id) %></td>
               <td><%= link_to "Destroy", book_path(@books.id), method: :delete, "date-confirm" => "Are you sure?" %></td>
             <% end %>
-
-          </tr>
-        </thead>
+        </tbody>
+          
+        
       </table>
     <div>
 
