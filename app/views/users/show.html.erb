@@ -1,18 +1,28 @@
-<%= render 'books/list', book: @book %>
+<% if flash[:notice] %>
+<p id="notice">
+<%= flash[:notice] %>
+   </p>
+ <% end %>
+
+
+
+<%= render 'books/list', book: @book, user: @user %>
 
  <h1>Books</h1>
  <table>
    <thead>
      <tr>
-       <th>image</th>
+       <th></th>
        <th>Title</th>
        <th>Opinion</th>
      </tr>
    </thead>
-   
+
    <tbody>
-     <tb>
-       
-     </tb>
+     <% @books.each do |book| %>
+       <td><%= image_tag @user.get_profile_image(100,100) %></td>
+       <td><%= book.title %></td>
+       <td><%= book.body %></td>
+     <% end %>
    </tbody>
  </table>

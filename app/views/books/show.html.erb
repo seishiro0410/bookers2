@@ -1,4 +1,12 @@
-<%= render 'books/list', book: @book %>
+<% if flash[:notice] %>
+<p id="notice">
+<%= flash[:notice] %>
+   </p>
+ <% end %>
+
+<%= render 'books/list', book: @book, user: @user %>
+
+
 
 
 <h1>Book detail</h1>
@@ -6,11 +14,21 @@
       <table>
         <thead>
           <tr>
-            <td><%= image_tag @user.get_profile_image(100,100) %></td>
+            <td>
+            <%= link_to user_path(book.user.id) do %>
+              <%= image_tag @user.get_profile_image(100,100) %>
+            <% end %>
+            </td>
             <td><%= @books.title %></td>
             <td><%= @books.body %></td>
-            <td><%= link_to "Edit", edit_book_path(@books.id) %></td>
-            <td><%= link_to "Destroy", book_path(@books.id), method: :delete, "date-confirm" => "Are you sure?" %></td>
+            <% if @books.user == current_user %>
+              <td><%= link_to "Edit", edit_book_path(@books.id) %></td>
+              <td><%= link_to "Destroy", book_path(@books.id), method: :delete, "date-confirm" => "Are you sure?" %></td>
+            <% end %>
+
           </tr>
         </thead>
       </table>
+    <div>
+
+    </div>
