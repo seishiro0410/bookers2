@@ -25,9 +25,11 @@ class BooksController < ApplicationController
   end
 
   def show
-    @books = Book.find(params[:id])
-    @user = current_user
-    @book = Book.new
+    @book = Book.find(params[:id])
+    # @user = current_user
+    # @user = User.find(params[:id])
+    @user = @book.user
+    @book_new = Book.new
   end
 
   def edit
@@ -56,5 +58,9 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :body)
   end
 
-
+  def correct_user
+    @book = Book.find(params[:id])
+    @user = @book.user
+    redirect_to(books_path) unless @user == current_user
+  end
 end
